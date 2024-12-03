@@ -6,13 +6,21 @@ conn.set_session(autocommit= True)
 
 cur.execute("""
 
-create table info(
+create table if not exists info(
     name varchar(20),
     last_name varchar(20),
     age int
 );
 """)
-
+# cur.execute("""
+# insert into info values('majid','ghorbani',40)
+# """)
+cur.execute("""
+select * from info
+""")
+a = cur.fetchall()
+for i in a:
+    print(i)
 # cur.execute("""
 # create database test
 # """)
